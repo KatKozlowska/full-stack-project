@@ -1,0 +1,48 @@
+@use "../../assets/variables" as *;
+
+.nav{
+    display: flex;
+    justify-content: space-around;
+    padding:10px 10px;
+
+    &__img{
+        height:45px;
+        &--home{
+            height:40px;
+            width:35px;
+        }
+    }
+    &__item{
+        display: flex;
+        align-items: center;
+    }
+    &:hover{
+        cursor: pointer;
+        opacity: 100%;
+        
+    }
+}
+
+@media screen and (min-width: $desktop){
+ .nav{
+    display: flex;
+    height: 100vh;
+    width:10vw;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    &__item{
+        height:150px;
+    }
+    &__img{
+        height:50px;
+        &--home{
+            width:45px;
+        }
+    }
+
+
+
+}
+
+}
