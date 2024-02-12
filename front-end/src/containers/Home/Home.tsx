@@ -1,10 +1,13 @@
+import TaskCard from "../../components/Task Card/TaskCard";
 import "./Home.scss"
 
 
 const Home = () => {
   return (
     <div className="home">
-      <p>This is home</p>
+      <h1>Home</h1>
+      <TaskCard/>
+      <TaskCard/>
       
     </div>
   );

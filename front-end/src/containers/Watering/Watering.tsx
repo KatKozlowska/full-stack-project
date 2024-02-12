@@ -3,7 +3,8 @@ import "./Watering.scss"
 const Watering = () => {
   return (
     <div className="watering">
-      <p> this is the watering schedule</p>
+      <h1>Watering</h1>
+      <p> cardlist.map desc order days left to water plant </p>
     </div>
   );
 };

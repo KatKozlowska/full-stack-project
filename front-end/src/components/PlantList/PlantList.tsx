@@ -3,7 +3,10 @@ import "./PlantList.scss"
 
 const PlantList = () => {
   return (
+    
     <div className="plan-list">
+      
+       
         
   
       
