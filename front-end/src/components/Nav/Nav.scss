@@ -4,7 +4,6 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  padding: 10px 10px;
 
   &__img {
     height: 45px;
@@ -30,7 +29,7 @@
 @media screen and (min-width: 1024px) {
   .nav {
     height: 100vh;
-    width: 10vw;
+    width: 10%;
     align-items: center;
     &__item {
       height: 150px;

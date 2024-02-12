@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./containers/Home/Home";
 import NewPlant from "./containers/NewPlant/NewPlant";
 import Watering from "./containers/Watering/Watering";
+import "./App.scss"
 
 const App = () => {
-  return<>
+  return<div className="main ">
   <Router>
   <Nav/>
   <Routes>
@@ -15,7 +16,7 @@ const App = () => {
 
   </Routes>
   </Router>
-  </>;
+  </div>;
   
 }
 

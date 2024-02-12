@@ -1,8 +1,13 @@
+import "./Home.scss"
+
 
 const Home = () => {
-
-    return(<>
-    <p>This is home</p></>)
-}
+  return (
+    <div className="home">
+      <p>This is home</p>
+      
+    </div>
+  );
+};
 
 export default Home;
