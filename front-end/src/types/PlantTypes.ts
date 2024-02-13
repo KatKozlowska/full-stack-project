@@ -1,7 +1,9 @@
-type PlantType = {
+type PlantTypes = {
     id:number;
     name:string;
-    type:string;
-    lastWatered:Date;
-    nextWatering:number;
+    description:string;
+    watering_frequency:number;
+   
 }
+
+export default PlantTypes;

@@ -4,6 +4,7 @@ import Home from "./containers/Home/Home";
 import NewPlant from "./containers/NewPlant/NewPlant";
 import Watering from "./containers/Watering/Watering";
 import "./App.scss"
+import EditPlant from "./containers/EditPlant/EditPlant";
 
 const App = () => {
   return<div className="main ">
@@ -13,6 +14,7 @@ const App = () => {
     <Route path="/" element={<Home/>}></Route>
     <Route path="/new-plant" element={<NewPlant/>}></Route>
     <Route path="/water-plant" element={<Watering/>}></Route>
+    <Route path="/plants/:id" element={<EditPlant/>}></Route>
 
   </Routes>
   </Router>
