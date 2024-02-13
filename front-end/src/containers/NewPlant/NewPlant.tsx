@@ -8,6 +8,17 @@ const NewPlant = () => {
   const [newPlant, setNewPlant] = useState(false);
   const [plants, setPlants] = useState<PlantTypes[]>([]);
 
+
+
+  const handleSubmit = async (plant: PlantTypes) => {
+    console.log(plant);
+    const result = await fetch("http://localhost:8080/plant", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify(plant),
+  });
+  };
+
   const handleShowNewPlant = () => setNewPlant(!newPlant);
 
   const getPlants = async () => {
@@ -15,6 +26,10 @@ const NewPlant = () => {
     const plantsData = await response.json();
     setPlants(plantsData);
   };
+
+ 
+
+  const defaultForm= {id: -1, name: "", description: "", wateringFrequency: 7};
 
   useEffect(() => {
     getPlants();
@@ -24,17 +39,12 @@ const NewPlant = () => {
     <div className="new-plant">
       <h1> My Plants</h1>
       <button
-        className={
-          newPlant
-            ? "new-plant__button"
-            : "new-plant__button new-plant__button--secondary"
-        }
+        className="button"
         onClick={handleShowNewPlant}
       >
-        {" "}
         Add new plant
       </button>
-      {newPlant && <Form />}
+      {newPlant && <Form handleSubmit={handleSubmit} default={defaultForm} title= "Add a new plant" />}
       <PlantList plants={plants} />
     </div>
   );
