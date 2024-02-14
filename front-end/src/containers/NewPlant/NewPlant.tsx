@@ -29,7 +29,7 @@ const NewPlant = () => {
 
  
 
-  const defaultForm= {id: -1, name: "", description: "", wateringFrequency: 7};
+  const defaultForm= {id: -1, name: "", description: "", wateringFrequency: ""};
 
   useEffect(() => {
     getPlants();
@@ -45,7 +45,10 @@ const NewPlant = () => {
         Add new plant
       </button>
       {newPlant && <Form handleSubmit={handleSubmit} default={defaultForm} title= "Add a new plant" />}
+      <div className="scroll">
       <PlantList plants={plants} />
+      </div>
+      
     </div>
   );
 };

@@ -13,5 +13,4 @@ insert into watering(id,plant_id, watered_on) values
 (default, 3, '2023-11-12'),
 (default, 3, '2024-01-08'),
 (default, 3, '2024-01-01'),
-
 (default, 4, '2024-01-12');

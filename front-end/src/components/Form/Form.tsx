@@ -47,7 +47,7 @@ const Form = ({ default: plants, title, handleSubmit }: FormProps) => {
           type="text"
           placeholder="how often does it need to be watered"
           value={plant.wateringFrequency}
-          onInput={(event) => handleInput(event, "watering_frequency")}
+          onInput={(event) => handleInput(event, "wateringFrequency")}
         />
         <button type="submit" className="form__button">Submit</button>
       </form>

@@ -3,6 +3,7 @@ type PlantTypes = {
     name:string;
     description:string;
     wateringFrequency:number;
+    lastWatered:string;
    
 }
 
