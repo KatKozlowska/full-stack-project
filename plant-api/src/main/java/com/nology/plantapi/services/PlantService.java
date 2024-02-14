@@ -12,8 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -32,6 +34,15 @@ public class PlantService {
             .stream()
             .map(this::toDto)
             .toList();
+  }
+
+  public List<PlantViewObject> getAllPlants(Optional<LocalDate> nextWater) {
+
+    if (nextWater.isEmpty()) {
+      return getAllPlants();
+    }
+    return getAllPlants().stream().filter(p -> p.getNextWater().isEqual(nextWater.get())).toList();
+
   }
 
   public void addPlant(PlantEntity plant) {
@@ -69,5 +80,11 @@ public class PlantService {
       plantView.setNextWater(watering.getWateredOn().plusDays(plant.getWateringFrequency()));
     }
     return plantView;
+  }
+
+  public List<PlantViewObject> getPlantsToWaterThisWeek() {
+    LocalDate today = LocalDate.now();
+
+    return getAllPlants().stream().filter(p -> p.getNextWater().isAfter(today) && p.getNextWater().isBefore(today.plusDays(7))).toList();
   }
 }

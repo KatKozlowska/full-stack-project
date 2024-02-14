@@ -5,7 +5,7 @@ import PlantTypes from "../../types/PlantTypes";
 
 type TaskCardProps = {
   title: string;
-  tasks:PlantTypes;
+  tasks:PlantTypes[];
   image:string;
 
 }
@@ -17,9 +17,7 @@ const TaskCard = ({title, tasks, image}: TaskCardProps) => {
     <div className="plant-card__text">
     <h2 className="plant-name">{title}</h2>
     <ul>
-        <li>Water {tasks.lastWatered}</li>
-        <li>Task 2 </li>
-     
+        {tasks.map(task => <li>Water {task.name}</li>)}     
     </ul>
     </div>
     <div className="plant-card__container">

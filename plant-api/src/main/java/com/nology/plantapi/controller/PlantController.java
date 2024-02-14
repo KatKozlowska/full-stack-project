@@ -7,11 +7,14 @@ import com.nology.plantapi.entities.PlantEntity;
 import jakarta.transaction.Transactional;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -29,8 +32,13 @@ public class PlantController {
     }
 
     @GetMapping("/plants")
-    public ResponseEntity<List<PlantViewObject>> getPlants() {
-        return ResponseEntity.ok(plantService.getAllPlants());
+    public ResponseEntity<List<PlantViewObject>> getPlants(@RequestParam Optional<LocalDate> nextWater) {
+        return ResponseEntity.ok(plantService.getAllPlants(nextWater));
+    }
+
+    @GetMapping("plants/thisWeek")
+    public ResponseEntity<List<PlantViewObject>> getPlantsToWaterNextWeek() {
+        return ResponseEntity.ok(plantService.getPlantsToWaterThisWeek());
     }
 
     @GetMapping("plants/{id}")
@@ -40,7 +48,7 @@ public class PlantController {
 
     // will return a watering history when called
     @GetMapping("/plants/{id}/watering")
-        public ResponseEntity<List<WateringEntity>> getWateringByPlantId(@PathVariable long id) {
+    public ResponseEntity<List<WateringEntity>> getWateringByPlantId(@PathVariable long id) {
             return ResponseEntity.ok(plantService.getWateringEntities(id));
     }
 

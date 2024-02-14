@@ -4,7 +4,7 @@ type PlantTypes = {
     description:string;
     wateringFrequency:number;
     lastWatered:string;
-   
+    nextWater:string;
 }
 
 export default PlantTypes;

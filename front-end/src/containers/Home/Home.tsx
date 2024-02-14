@@ -2,27 +2,28 @@ import { useEffect, useState } from "react";
 import TaskCard from "../../components/Task Card/TaskCard";
 import "./Home.scss"
 import PlantTypes from "../../types/PlantTypes";
-import { useParams } from "react-router-dom";
 import today from "../../assets/images/calendar.png" 
 import next from "../../assets/images/next-week.png"
 
 
 const Home = () => {
-  const {id} = useParams();
   const [tasks, setTasks] = useState<PlantTypes[]>([]);
 
 
   const getPlants = async () => {
-    const response = await fetch(`http://localhost:8080/plants/${id}/watering`);
+
+    const date = new Date();
+
+    const dateString = date.toISOString().split('T')[0];
+
+    const response = await fetch(`http://localhost:8080/plants?nextWater=${dateString}`);
     const wateringData = await response.json();
     setTasks(wateringData);
   };
 
   useEffect(() => {
-    if (id) {
-      getPlants();
-    }
-  }, [id]);
+    getPlants();
+  },[]);
 
   console.log(tasks)
 
