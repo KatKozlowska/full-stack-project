@@ -18,6 +18,7 @@ const NewPlant = () => {
     body: JSON.stringify(plant),
   });
   handleShowNewPlant();
+  getPlants();
   };
 
 
@@ -36,7 +37,7 @@ const NewPlant = () => {
 
   useEffect(() => {
     getPlants();
-  }, [plants]);
+  }, []);
 
   return (
     <div className="new-plant">

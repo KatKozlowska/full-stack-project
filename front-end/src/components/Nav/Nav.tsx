@@ -13,8 +13,7 @@ const Nav = () => {
         <div className="nav-container">
         <Link title="Home" className="nav__item" to="/"><img className=" nav__img nav__img--home" src={home}/></Link>
         <Link title="Your Plants" className="nav__item" to="/new-plant"><img className="nav__img nav__img--new-plant" src={new_plant}/></Link>
-        <Link title="Watering Schedules" className="nav__item" to="/water-plant"><img className="nav__img nav__img--water-plant" src={water}/></Link>
-        </div>
+                </div>
       </div>
     );
   };

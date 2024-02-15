@@ -13,7 +13,7 @@ const PlantCard = ({plantCard}:PlantCardProps) => {
         <h1 className="plant-name">{plantCard.name}</h1>
         <p>{plantCard.description}</p>
         <p>To be watered every {plantCard.wateringFrequency} days</p>
-        <p>last watered on {plantCard.lastWatered}</p>
+        <p>Next watering {plantCard.nextWater}</p>
         </div>
         <div className="plant-card__container">
         <img className="plant-card__img" src={plant}></img>
