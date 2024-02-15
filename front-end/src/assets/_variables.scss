@@ -1,4 +1,9 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Madurai:wght@300;400;500;600;700&display=swap');
+
+
 $colour-one: #6e896a;
 $colour-two: #325434;
 $colour-three: #0f0f0d;
@@ -7,3 +12,8 @@ $colour-four: #ee892f;
 $tablet: 768px;
 $desktop:1024px;
 $large-desktop:1440px;
+
+$font-headings:"Montserrat", sans-serif;
+$font-primary: "Lora", serif;
+$font-secondary:"Hind Madurai", sans-serif;
+

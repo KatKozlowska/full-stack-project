@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import "./PlantList.scss"
 import PlantCard from "../PlantCard/PlantCard";
 import PlantTypes from "../../types/PlantTypes";
+import "./PlantList.scss"
+
 
 type PlantListProps = {
   plants : PlantTypes[];

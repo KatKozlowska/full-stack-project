@@ -1,6 +1,8 @@
 @use "../../assets/variables" as *;
 
 .edit-plant{
+    font-family: $font-headings;
+    font-family: $font-headings;
     display: flex;
     flex-direction: column;
     margin:10px;
@@ -8,5 +10,20 @@
     width: 90%;
     height:100%;
     background-image:  url('../../assets/images/squiggles.svg');
+    
+    &__button {
+        background-color: $colour-four;
+        color: white;
+        border:none;
+        border-radius: 25px;
+        padding:15px 30px;
+        margin:10px 0;
+        font-family: $font-headings;
+        &--two{
+            background-color: $colour-three;
+
+        }
+    }
+
 
 }

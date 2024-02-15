@@ -26,6 +26,8 @@ const Form = ({ default: plants, title, handleSubmit }: FormProps) => {
 
   return (
     <div className="form">
+   
+      <div className="form-container">
       <h1>{title}</h1>
       <form onSubmit={validateInput}>
         <input
@@ -45,12 +47,21 @@ const Form = ({ default: plants, title, handleSubmit }: FormProps) => {
         <input
           className="form__input"
           type="text"
-          placeholder="how often does it need to be watered"
+          placeholder="water every x days "
           value={plant.wateringFrequency}
           onInput={(event) => handleInput(event, "wateringFrequency")}
         />
-        <button type="submit" className="form__button">Submit</button>
-      </form>
+         <input
+          className="form__input"
+          type="text"
+          placeholder="last watered yyyy-mm-dd"
+          value={plant.lastWatered}
+          onInput={(event) => handleInput(event, "lastWatered")}
+        />
+           <button type="submit" className="form-button">Submit</button>
+        </form>
+   
+      </div>
     </div>
   );
 };

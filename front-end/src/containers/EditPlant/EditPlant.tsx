@@ -4,6 +4,8 @@ import Form from "../../components/Form/Form"
 import PlantCard from "../../components/PlantCard/PlantCard";
 import { useNavigate, useParams } from "react-router-dom";
 import PlantTypes from "../../types/PlantTypes";
+import WateringCard from "../../components/WateringCard/WateringCard";
+
 
 
 const EditPlant = () => {
@@ -21,9 +23,18 @@ const getPlantById = async (id:string) => {
   setPlant(plantData);
 };
 
+const getWateringHistory = async (id:string) => {
+const result = await fetch (`http://localhost:8080/plant/${id}/watering`);
+const wateringHistory = await result.json();
+setPlant(wateringHistory)}
+
+
+
   useEffect(() => {
     if (id) {
       getPlantById(id);
+      getWateringHistory(id);
+  
     }
   }, [id]);
 
@@ -39,7 +50,6 @@ const getPlantById = async (id:string) => {
       navigate("/new-plant")
     }
   }
-
 
     const handleUpdatePlant = async (editedPlant: PlantTypes) => {
     console.log(editedPlant);
@@ -61,10 +71,11 @@ const getPlantById = async (id:string) => {
     <div className="edit-plant">
       <h1>Edit Plant</h1>
       {plant && (<PlantCard plantCard={plant} />)}
-      <p>Add plant watering history </p>
-      <button className="edit-greeting__button edit-greeting__button--secondary"
+     
+      <WateringCard wateringCard={plant}/>
+      <button className="edit-plant__button"
             onClick={handleEditPlant} >Edit Plant</button>
-      <button onClick={handleDeletePlant}>My Plant Died</button>
+      <button className=" edit-plant__button edit-plant__button--two" onClick={handleDeletePlant}>My Plant Died</button>
       {editPlant && (<Form default={plant} title="Edit Plant" handleSubmit={handleUpdatePlant}/>)}
     </div>
   );

@@ -1,0 +1,49 @@
+
+@use "../../assets/variables" as *;
+
+.form{
+    margin:15px;
+    display: flex;
+    justify-content: center;
+    background-color: $colour-one;
+    color: white;
+    width:600px;
+    border-radius: 15px;
+    padding:20px;
+    
+
+    &-container{
+     
+        h1{
+            font-family: $font-headings;
+        }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    
+    }
+
+    &-button {
+        background-color: $colour-four;
+        color: white;
+        border:none;
+        border-radius: 25px;
+        padding:15px 30px;
+        margin:10px 0;
+        font-family: $font-headings;
+    }
+   
+   
+    input[type=text] {
+        font-family: $font-secondary;
+        width: 100%;
+        padding: 12px 20px;
+        border:none;
+        border-radius: 5px;
+        margin: 8px 0;
+        box-sizing: border-box;
+      }
+
+      
+}

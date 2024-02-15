@@ -1,41 +1,40 @@
 @use "../../assets/variables" as *;
 
-.task-card{
-    background-color:$colour-two;
+.watering-card{
+    background-color: $colour-two;
+   
     color: white;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: row;
-    height:300px;
+    height:150px;
     width:600px;
     border-radius: 15px;
     padding:20px;
-    margin:16px;
-
+    margin:10px;
+    
     h1{
         font-family: $font-headings;
-        font-size: 36px;
-        
     }
-    ul{font-family: $font-secondary;
-    font-size: 20px;}
+    p{
+        font-family: $font-secondary;
+    }
     &__text{
         width:50%;
     }
     &__container{
-        margin-top: 12px;
-        width:45%;
+        
+        width:50%;
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: white;
-        height:90%;
-        border-radius: 200px;
     }
 
     &__img{
         height:150px;
-     
-      
+        background-color: white;
+        border-radius: 125px;
+        
     }
 }

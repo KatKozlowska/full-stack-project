@@ -1,28 +1,41 @@
 @use "../../assets/variables" as *;
 
-.plant-card{
-    background-color: $colour-two;
-    color: white;
-    display: flex;
-    flex-direction: row;
-    height:300px;
-    width:600px;
-    border-radius: 15px;
-    padding:20px;
-    &__text{
-        width:50%;
-    }
-    &__container{
-        width:50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+.plant-card {
+  background-color: $colour-two;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  height: 300px;
+  width: 600px;
+  border-radius: 15px;
+  padding: 20px;
+  margin: 10px;
+  
 
-    &__img{
-        height:250px;
-        background-color: white;
-        border-radius: 125px;
-        
-    }
+  h1 {
+    font-family: $font-headings;
+    font-size: 36px;
+    text-decoration: none;
+  }
+  p {
+    font-family: $font-secondary;
+    font-size: 20px;
+
+  }
+  &__text {
+    width: 50%;
+    
+  }
+  &__container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__img {
+    height: 250px;
+    background-color: white;
+    border-radius: 125px;
+  }
 }

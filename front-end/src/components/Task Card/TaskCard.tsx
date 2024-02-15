@@ -1,6 +1,4 @@
 import "./TaskCard.scss";
-import today from "../../assets/images/calendar.png" 
-import next from "../../assets/images/next-week.png"
 import PlantTypes from "../../types/PlantTypes";
 
 type TaskCardProps = {
@@ -13,19 +11,20 @@ type TaskCardProps = {
 
 const TaskCard = ({title, tasks, image}: TaskCardProps) => {
   return (
-    <div className="plant-card">
-    <div className="plant-card__text">
-    <h2 className="plant-name">{title}</h2>
+    <div className="task-card">
+    <div className="task-card__text">
+    <h1 className="task-name">{title}</h1>
     <ul>
-        {tasks.map(task => <li>Water {task.name}</li>)}     
+        {tasks.map(task => <li key={task.id}>Water {task.name}</li>)}     
     </ul>
     </div>
-    <div className="plant-card__container">
-    <img className="plant-card__img" src={image}></img>
-
+    <div className="task-card__container">
+    
+    <img className="task-card__img" src={image}></img>
+    </div>
   
     </div>
-</div>
+
   );
 };
 

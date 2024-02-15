@@ -17,7 +17,10 @@ const NewPlant = () => {
     headers: {"Content-Type":"application/json"},
     body: JSON.stringify(plant),
   });
+  handleShowNewPlant();
   };
+
+
 
   const handleShowNewPlant = () => setNewPlant(!newPlant);
 
@@ -33,13 +36,13 @@ const NewPlant = () => {
 
   useEffect(() => {
     getPlants();
-  }, []);
+  }, [plants]);
 
   return (
     <div className="new-plant">
       <h1> My Plants</h1>
       <button
-        className="button"
+        className="new-plant-button"
         onClick={handleShowNewPlant}
       >
         Add new plant

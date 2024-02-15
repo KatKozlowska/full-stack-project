@@ -1,15 +1,18 @@
 @use "../../assets/variables" as *;
 
-
-.home{
-    display: flex;
-    flex-direction: column;
-    margin:10px;
-    align-items: center;
-    width: 90%;
-    height:100%; 
-    background-image:  url('../../assets/images/squiggles.svg');
-   
+.home {
+  display: flex;
+  flex-direction: column;
+  font-family: $font-headings;
+  font-size: 28px;
+  margin: 10px;
+  align-items: center;
+  width: 90%;
+  height:100vh;
+  background-image: url("../../assets/images/squiggles.svg");
  
-
+  h1{
+    font-size: 30px;
+  }
+  
 }
