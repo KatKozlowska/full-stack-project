@@ -45,8 +45,9 @@ public class PlantService {
 
   }
 
-  public void addPlant(PlantEntity plant) {
-    plantRepository.save(plant);
+  public void addPlant(PlantViewObject plant) {
+    PlantEntity plantEntity =  plantRepository.save(toPlantEntity(plant));
+    wateringRepository.save(toWateringEntity(plantEntity, plant));
   }
 
   public void updatePlant(PlantEntity newPlant, long id) {
@@ -65,26 +66,50 @@ public class PlantService {
     return wateringRepository.findByPlantIdOrderByWateredOnDesc(id);
   }
 
-  private PlantViewObject toDto(PlantEntity plant) {
-    WateringEntity watering =
-        wateringRepository.findFirstByPlantIdOrderByWateredOnDesc(plant.getId()).orElse(null);
-    PlantViewObject plantView =
-        PlantViewObject.builder()
-            .id(plant.getId())
-            .name(plant.getName())
-            .description(plant.getDescription())
-            .wateringFrequency(plant.getWateringFrequency())
-            .build();
-    if (watering != null) {
-      plantView.setLastWatered(watering.getWateredOn());
-      plantView.setNextWater(watering.getWateredOn().plusDays(plant.getWateringFrequency()));
-    }
-    return plantView;
-  }
-
   public List<PlantViewObject> getPlantsToWaterThisWeek() {
     LocalDate today = LocalDate.now();
 
     return getAllPlants().stream().filter(p -> p.getNextWater().isAfter(today) && p.getNextWater().isBefore(today.plusDays(7))).toList();
   }
+
+  public void addWater(WateringEntity water) {
+  wateringRepository.save(water);
+  }
+    private PlantViewObject toDto(PlantEntity plant) {
+        WateringEntity watering =
+                wateringRepository.findFirstByPlantIdOrderByWateredOnDesc(plant.getId()).orElse(null);
+        PlantViewObject plantView =
+                PlantViewObject.builder()
+                        .id(plant.getId())
+                        .name(plant.getName())
+                        .description(plant.getDescription())
+                        .wateringFrequency(plant.getWateringFrequency())
+                        .build();
+        if (watering != null) {
+            plantView.setLastWatered(watering.getWateredOn());
+            plantView.setNextWater(watering.getWateredOn().plusDays(plant.getWateringFrequency()));
+        }
+        return plantView;
+    }
+
+    private PlantEntity toPlantEntity(PlantViewObject plant) {
+      return PlantEntity.builder()
+              .id(-1)
+              .name(plant.getName())
+              .description(plant.getDescription())
+              .wateringFrequency(plant.getWateringFrequency())
+              .build();
+    }
+
+    private WateringEntity toWateringEntity( PlantEntity plantEntity, PlantViewObject plantView) {
+      return WateringEntity.builder()
+              .id(-1)
+              .plantId(plantEntity.getId())
+              .wateredOn(plantView.getLastWatered())
+              .build();
+    }
+
+
 }
+
+

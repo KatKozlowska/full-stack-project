@@ -26,9 +26,9 @@ public class PlantController {
 
     @PostMapping("/plant")
     @Transactional
-    public ResponseEntity<PlantEntity> createPlant(@RequestBody PlantEntity plant){
+    public ResponseEntity<String> createPlant(@RequestBody PlantViewObject plant){
         plantService.addPlant(plant);
-        return ResponseEntity.status(HttpStatus.CREATED).body(plant);
+        return ResponseEntity.status(HttpStatus.CREATED).body("saved");
     }
 
     @GetMapping("/plants")

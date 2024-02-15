@@ -1,17 +1,21 @@
-import PlantTypes from "../../types/PlantTypes";
+
+import WateringTypes from "../../types/WateringTypes";
 import WateringCard from "../WateringCard/WateringCard";
 
 
 
 
 type WateringListProps = {
-    watering : PlantTypes[];
+   
+    watering : WateringTypes[];
+    
   }
   const WateringList = ({watering}:WateringListProps) => {
     return (
       
       <div className="plan-list">
-         {watering.map(water => <div><WateringCard wateringCard={water}/></div>)}
+        <h1>Watering history</h1>
+         {watering.map(water => <div><WateringCard  wateringCard={water}/></div>)}
          
         
       </div>

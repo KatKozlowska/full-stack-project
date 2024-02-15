@@ -5,14 +5,18 @@ import PlantCard from "../../components/PlantCard/PlantCard";
 import { useNavigate, useParams } from "react-router-dom";
 import PlantTypes from "../../types/PlantTypes";
 import WateringCard from "../../components/WateringCard/WateringCard";
+import WateringTypes from "../../types/WateringTypes";
 
 
 
-const EditPlant = () => {
+const EditPlant = () =>{ 
   const {id} =useParams();
   const navigate = useNavigate();
   const [editPlant, setEditPlant] = useState(false);
   const [plant, setPlant] = useState<PlantTypes>();
+  const [water, setWater] = useState<WateringTypes[]>([]);
+  const [d , setD] = useState<number>(0)
+  
 
   const handleEditPlant = () => setEditPlant(!editPlant);
 
@@ -24,9 +28,9 @@ const getPlantById = async (id:string) => {
 };
 
 const getWateringHistory = async (id:string) => {
-const result = await fetch (`http://localhost:8080/plant/${id}/watering`);
+const result = await fetch (`http://localhost:8080/plants/${id}/watering`);
 const wateringHistory = await result.json();
-setPlant(wateringHistory)}
+setWater(wateringHistory)}
 
 
 
@@ -34,9 +38,8 @@ setPlant(wateringHistory)}
     if (id) {
       getPlantById(id);
       getWateringHistory(id);
-  
     }
-  }, [id]);
+  }, [id,d]);
 
   const handleDeletePlant = async () => {
     const result = await fetch(`http://localhost:8080/plant/${id}`,{
@@ -63,7 +66,19 @@ setPlant(wateringHistory)}
       setPlant(editedPlant);
     }
   };
- 
+
+  
+  const handleWateredToday = async () => {
+    const response = await fetch(`http://localhost:8080/watering`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({id:-1, plantId:plant?.id, wateredOn:new Date().toISOString().split("T")[0]}),
+    })
+    
+    setD(d+1);
+  }
+
+  
   if(!plant) return(console.log("no plant"))
 
 
@@ -72,11 +87,13 @@ setPlant(wateringHistory)}
       <h1>Edit Plant</h1>
       {plant && (<PlantCard plantCard={plant} />)}
      
-      <WateringCard wateringCard={plant}/>
+      {water.map( w => <WateringCard wateringCard={w}/>)}
       <button className="edit-plant__button"
             onClick={handleEditPlant} >Edit Plant</button>
       <button className=" edit-plant__button edit-plant__button--two" onClick={handleDeletePlant}>My Plant Died</button>
       {editPlant && (<Form default={plant} title="Edit Plant" handleSubmit={handleUpdatePlant}/>)}
+      <button className="water-plant__button"
+            onClick={handleWateredToday} >Watered today</button>
     </div>
   );
 };
