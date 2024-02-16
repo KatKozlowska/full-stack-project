@@ -86,14 +86,17 @@ setWater(wateringHistory)}
     <div className="edit-plant">
       <h1>Edit Plant</h1>
       {plant && (<PlantCard plantCard={plant} />)}
-     
+     <p>Watering History</p>
       {water.map( w => <WateringCard wateringCard={w}/>)}
+      <div className=" edit-plant__container">
+      <button className="edit-plant__button edit-plant__button--three "
+            onClick={handleWateredToday} >Watered today</button>
       <button className="edit-plant__button"
             onClick={handleEditPlant} >Edit Plant</button>
       <button className=" edit-plant__button edit-plant__button--two" onClick={handleDeletePlant}>My Plant Died</button>
       {editPlant && (<Form default={plant} title="Edit Plant" handleSubmit={handleUpdatePlant}/>)}
-      <button className="water-plant__button"
-            onClick={handleWateredToday} >Watered today</button>
+    
+       </div>
     </div>
   );
 };
