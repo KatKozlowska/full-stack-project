@@ -1,9 +1,9 @@
 
 insert into plant(id,name,description,watering_frequency) values
-(default,'Vikus', 'good boi', 15),
-(default, 'spotify', 'has spots', 10),
-(default,'Fiddle Leaf Ficus', 'is problematic', 8),
-(default,'spider plant', 'is growing lots of babies', 8);
+(default,'String of Hearts', 'Indirect light', 15),
+(default, 'Begonia Maculata', 'Indirect light, High humidity', 10),
+(default,'Fiddle Leaf Fig', 'Bright indirect light, high humidity', 8),
+(default,'Spirder Plant', 'Part-shade/Full shade, ', 8);
 
 insert into watering(id,plant_id, watered_on) values
 (default, 1, '2024-01-12'),
