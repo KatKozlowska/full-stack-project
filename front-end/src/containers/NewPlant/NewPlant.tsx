@@ -8,20 +8,16 @@ const NewPlant = () => {
   const [newPlant, setNewPlant] = useState(false);
   const [plants, setPlants] = useState<PlantTypes[]>([]);
 
-
-
   const handleSubmit = async (plant: PlantTypes) => {
     console.log(plant);
     const result = await fetch("http://localhost:8080/plant", {
-    method: "POST",
-    headers: {"Content-Type":"application/json"},
-    body: JSON.stringify(plant),
-  });
-  handleShowNewPlant();
-  getPlants();
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(plant),
+    });
+    handleShowNewPlant();
+    getPlants();
   };
-
-
 
   const handleShowNewPlant = () => setNewPlant(!newPlant);
 
@@ -31,9 +27,12 @@ const NewPlant = () => {
     setPlants(plantsData);
   };
 
- 
-
-  const defaultForm= {id: -1, name: "", description: "", wateringFrequency: ""};
+  const defaultForm = {
+    id: -1,
+    name: "",
+    description: "",
+    wateringFrequency: "",
+  };
 
   useEffect(() => {
     getPlants();
@@ -42,17 +41,19 @@ const NewPlant = () => {
   return (
     <div className="new-plant">
       <h1> My Plants</h1>
-      <button
-        className="new-plant-button"
-        onClick={handleShowNewPlant}
-      >
+      <button className="new-plant-button" onClick={handleShowNewPlant}>
         Add new plant
       </button>
-      {newPlant && <Form handleSubmit={handleSubmit} default={defaultForm} title= "Add a new plant" />}
+      {newPlant && (
+        <Form
+          handleSubmit={handleSubmit}
+          default={defaultForm}
+          title="Add a new plant"
+        />
+      )}
       <div className="scroll">
-      <PlantList plants={plants} />
+        <PlantList plants={plants} />
       </div>
-      
     </div>
   );
 };
