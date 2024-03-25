@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./EditPlant.scss";
 import Form from "../../components/Form/Form";
 import PlantCard from "../../components/PlantCard/PlantCard";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import PlantTypes from "../../types/PlantTypes";
 import WateringCard from "../../components/WateringCard/WateringCard";
 import WateringTypes from "../../types/WateringTypes";
@@ -80,9 +80,14 @@ const EditPlant = () => {
 
   return (
     <div className="edit-plant">
+      <section className="exit">
+        <Link to="/new-plant" ><button className="exit--button">X</button></Link>
+      </section>
+
       <h1>Edit Plant</h1>
+
       {plant && <PlantCard plantCard={plant} />}
-      <p>Watering History</p>
+      <h1>Watering History</h1>
       {water.map((w) => (
         <WateringCard wateringCard={w} />
       ))}
@@ -102,14 +107,14 @@ const EditPlant = () => {
         >
           My Plant Died
         </button>
-        {editPlant && (
-          <Form
-            default={plant}
-            title="Edit Plant"
-            handleSubmit={handleUpdatePlant}
-          />
-        )}
       </div>
+      {editPlant && (
+        <Form
+          default={plant}
+          title="Edit Plant"
+          handleSubmit={handleUpdatePlant}
+        />
+      )}
     </div>
   );
 };

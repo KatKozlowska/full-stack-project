@@ -34,6 +34,22 @@
         display: flex;
 
     }
+    
+    .exit {
+        display: flex;
+        margin:10px;
+        width: 625px;
+        justify-content: flex-end;
+
+        &--button {
+            background-color: $colour-four;
+            border: none;
+            height:40px;
+            width:40px;
+            border-radius: 25px;
+            color: white;
+        }
+    }
 
 
 }
